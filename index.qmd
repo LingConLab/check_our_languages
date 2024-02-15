@@ -18,17 +18,17 @@ df |>
   mutate_all(function(i) ifelse(is.na(i), "", i)) |> 
   mutate(new = str_c(family, "/", aff, "/", 
                      lang, " (language)/", 
-                     dialect_toplevel, "(dialect_toplevel) /",
-                     dialect_nt1, "(dialect_nt1) /",
-                     dialect_nt2, "(dialect_nt2) /",
-                     dialect_nt3, "(dialect_nt3) /",
-                     village_dialect, "(village_dialect) /",
+                     dialect_toplevel, " (dialect_toplevel) /",
+                     dialect_nt1, " (dialect_nt1) /",
+                     dialect_nt2, " (dialect_nt2) /",
+                     dialect_nt3, " (dialect_nt3) /",
+                     village_dialect, " (village_dialect) /",
                      village),
-         new = str_remove_all(new, "\\/\\(dialect_toplevel\\) "),
-         new = str_remove_all(new, "\\/\\(dialect_nt1\\) "),
-         new = str_remove_all(new, "\\/\\(dialect_nt2\\) "),
-         new = str_remove_all(new, "\\/\\(dialect_nt3\\) "),
-         new = str_remove_all(new, "\\/\\(village_dialect\\) ")) |> 
+         new = str_remove_all(new, "\\/ \\(dialect_toplevel\\) "),
+         new = str_remove_all(new, "\\/ \\(dialect_nt1\\) "),
+         new = str_remove_all(new, "\\/ \\(dialect_nt2\\) "),
+         new = str_remove_all(new, "\\/ \\(dialect_nt3\\) "),
+         new = str_remove_all(new, "\\/ \\(village_dialect\\) ")) |> 
   pull(new) |> 
   jsTree()
 ```
